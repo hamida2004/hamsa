@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/hamsa/static/css/main.59c3a457.css",
+    "main.js": "/hamsa/static/js/main.7b81008e.js",
+    "static/media/dress3.jfif": "/hamsa/static/media/dress3.2eca46a1da43e1bdcf9d.jfif",
+    "static/media/dress1.jfif": "/hamsa/static/media/dress1.cd02025949c9cca58a3c.jfif",
+    "static/media/dress2.jfif": "/hamsa/static/media/dress2.6d0ac3ace1d8856fcf81.jfif",
+    "index.html": "/hamsa/index.html",
+    "main.59c3a457.css.map": "/hamsa/static/css/main.59c3a457.css.map",
+    "main.7b81008e.js.map": "/hamsa/static/js/main.7b81008e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.59c3a457.css",
+    "static/js/main.7b81008e.js"
+  ]
+}
