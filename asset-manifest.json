@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hamsa/static/css/main.59c3a457.css",
-    "main.js": "/hamsa/static/js/main.72c88f8f.js",
+    "main.js": "/hamsa/static/js/main.d2a15ab0.js",
     "static/media/1.jpg": "/hamsa/static/media/1.cd757416161636604b0b.jpg",
     "static/media/3.jpg": "/hamsa/static/media/3.cd757416161636604b0b.jpg",
     "static/media/6.jpg": "/hamsa/static/media/6.3be00ae900a76a2974f3.jpg",
@@ -10,10 +10,10 @@
     "static/media/4.jpg": "/hamsa/static/media/4.5a7209ef10705727a0d0.jpg",
     "index.html": "/hamsa/index.html",
     "main.59c3a457.css.map": "/hamsa/static/css/main.59c3a457.css.map",
-    "main.72c88f8f.js.map": "/hamsa/static/js/main.72c88f8f.js.map"
+    "main.d2a15ab0.js.map": "/hamsa/static/js/main.d2a15ab0.js.map"
   },
   "entrypoints": [
     "static/css/main.59c3a457.css",
-    "static/js/main.72c88f8f.js"
+    "static/js/main.d2a15ab0.js"
   ]
 }
