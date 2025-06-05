@@ -1,16 +1,19 @@
 {
   "files": {
     "main.css": "/hamsa/static/css/main.59c3a457.css",
-    "main.js": "/hamsa/static/js/main.7b81008e.js",
-    "static/media/dress3.jfif": "/hamsa/static/media/dress3.2eca46a1da43e1bdcf9d.jfif",
-    "static/media/dress1.jfif": "/hamsa/static/media/dress1.cd02025949c9cca58a3c.jfif",
-    "static/media/dress2.jfif": "/hamsa/static/media/dress2.6d0ac3ace1d8856fcf81.jfif",
+    "main.js": "/hamsa/static/js/main.72c88f8f.js",
+    "static/media/1.jpg": "/hamsa/static/media/1.cd757416161636604b0b.jpg",
+    "static/media/3.jpg": "/hamsa/static/media/3.cd757416161636604b0b.jpg",
+    "static/media/6.jpg": "/hamsa/static/media/6.3be00ae900a76a2974f3.jpg",
+    "static/media/2.jpg": "/hamsa/static/media/2.5a7209ef10705727a0d0.jpg",
+    "static/media/5.jpg": "/hamsa/static/media/5.ba562239ad1cd7b7ae78.jpg",
+    "static/media/4.jpg": "/hamsa/static/media/4.5a7209ef10705727a0d0.jpg",
     "index.html": "/hamsa/index.html",
     "main.59c3a457.css.map": "/hamsa/static/css/main.59c3a457.css.map",
-    "main.7b81008e.js.map": "/hamsa/static/js/main.7b81008e.js.map"
+    "main.72c88f8f.js.map": "/hamsa/static/js/main.72c88f8f.js.map"
   },
   "entrypoints": [
     "static/css/main.59c3a457.css",
-    "static/js/main.7b81008e.js"
+    "static/js/main.72c88f8f.js"
   ]
 }
