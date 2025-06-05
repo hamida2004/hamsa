@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '../styles'
 import logo from '../images/HamSa.png'
 
 function Header() {

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import styled from 'styled-components';
-import logo from '../images/dresses/dress3.jfif';
-import logo1 from '../images/dresses/dress1.jfif';
-import logo2 from '../images/dresses/dress2.jfif';
 import { dresses } from '../data';
 
 const Wrapper = styled.div`
@@ -88,11 +85,24 @@ const FormWrapper = styled.form`
 
 function Order() {
   const { id } = useParams();
-  const [foundImg,setFoundImg]=useState({})
-  useEffect(() => {
-    const foundImg = dresses.find(img => img.id === Number(id));
-    setFoundImg(foundImg)
-  }, [])
+  const [foundImg, setFoundImg] = useState({});
+  const [images,setImages] = useState([])
+ const importAll = (r) => r.keys().map(r);
+
+const allImages = {
+  1: importAll(require.context('../images/dresses/1', false, /\.(png|jpe?g|jfif|svg)$/)),
+  2: importAll(require.context('../images/dresses/2', false, /\.(png|jpe?g|jfif|svg)$/)),
+  3: importAll(require.context('../images/dresses/3', false, /\.(png|jpe?g|jfif|svg)$/)),
+  4: importAll(require.context('../images/dresses/4', false, /\.(png|jpe?g|jfif|svg)$/)),
+};
+
+useEffect(() => {
+  const found = dresses.find(img => img.id === Number(id));
+  setFoundImg(found);
+
+  const imgs = allImages[id] || [];
+  setImages(imgs);
+}, [id]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -106,7 +116,6 @@ function Order() {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-
     });
   };
 
@@ -121,14 +130,13 @@ function Order() {
       color: formData.color,
       size: formData.size,
       dress_id: id,
-
       timestamp: new Date().toISOString(),
     };
 
     const googleSheetUrl = "https://script.google.com/macros/s/AKfycbxuwsYySpGKp6dVlQuVgHOE_0fnEnU0fb_iGtb96wdkbg5GsvhwTym_WCSZv0nPmkG5tg/exec";
 
     try {
-      const response = await fetch(googleSheetUrl, {
+      await fetch(googleSheetUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -151,23 +159,30 @@ function Order() {
           id="carouselExampleIndicators"
           className="carousel slide h-100"
           data-bs-ride="carousel"
-          data-bs-interval="2000" // slide every 1 second
+          data-bs-interval="2000"
         >
           <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            {images.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to={index}
+                className={index === 0 ? 'active' : ''}
+                aria-current={index === 0 ? 'true' : undefined}
+                aria-label={`Slide ${index + 1}`}
+              />
+            ))}
           </div>
           <div className="carousel-inner h-100">
-            <div className="carousel-item active h-100">
-              <img src={logo} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-            </div>
-            <div className="carousel-item h-100">
-              <img src={logo1} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-            </div>
-            <div className="carousel-item h-100">
-              <img src={logo2} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-            </div>
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`carousel-item h-100 ${index === 0 ? 'active' : ''}`}
+              >
+                <img src={image} className="d-block w-100 h-100 object-fit-cover" alt={`Slide ${index + 1}`} />
+              </div>
+            ))}
           </div>
         </div>
       </CarouselWrapper>

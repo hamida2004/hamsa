@@ -1,11 +1,11 @@
-
-import logo from '../images/dresses/dress3.jfif';
-import logo1 from '../images/dresses/dress1.jfif';
-import logo2 from '../images/dresses/dress2.jfif';
 import React from 'react';
 import styled from 'styled-components';
 import Card from '../components/Card';
 import { dresses } from '../data';
+
+// جلب جميع الصور من المجلد src/images/main
+const importAll = (r) => r.keys().map(r);
+const images = importAll(require.context('../images/dresses/main', false, /\.(png|jpe?g|jfif|svg)$/));
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,8 +18,6 @@ const CarouselWrapper = styled.div`
   width: 100%;
   height: 90vh;
   margin-bottom: 40px;
-
-  
 `;
 
 const Title = styled.h2`
@@ -36,49 +34,64 @@ const CardsContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-
-
 function Home() {
-    return (
-        <Wrapper>
-            {/* Carousel Section */}
-            <CarouselWrapper>
-                <div
-                    id="carouselExampleIndicators"
-                    className="carousel slide h-100"
-                    data-bs-ride="carousel"
-                    data-bs-interval="2000" // slide every 1 second
-                >
-                    <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div className="carousel-inner h-100">
-                        <div className="carousel-item active h-100">
-                            <img src={logo} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-                        </div>
-                        <div className="carousel-item h-100">
-                            <img src={logo1} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-                        </div>
-                        <div className="carousel-item h-100">
-                            <img src={logo2} className="d-block w-100 h-100 object-fit-cover" alt="..." />
-                        </div>
-                    </div>
-                </div>
-            </CarouselWrapper>
+  return (
+    <Wrapper>
+      {/* Carousel Section */}
+      <CarouselWrapper>
+        <div
+          id="carouselExampleIndicators"
+          className="carousel slide h-100"
+          data-bs-ride="carousel"
+          data-bs-interval="2000"
+        >
+          <div className="carousel-indicators">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to={index}
+                className={index === 0 ? 'active' : ''}
+                aria-current={index === 0 ? 'true' : undefined}
+                aria-label={`Slide ${index + 1}`}
+              />
+            ))}
+          </div>
+          <div className="carousel-inner h-100">
+            {images.map((img, index) => (
+              <div
+                key={index}
+                className={`carousel-item h-100 ${index === 0 ? 'active' : ''}`}
+              >
+                <img
+                  src={img}
+                  className="d-block w-100 h-100 object-fit-cover"
+                  alt={`slide-${index}`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </CarouselWrapper>
 
-            {/* Title Section */}
-            <Title>Discover</Title>
+      {/* Title Section */}
+      <Title>Discover</Title>
 
-            {/* Cards Section */}
-            <CardsContainer>
-                {dresses.map((dress, index) => {
-                  return  <Card id={dress.id} title={dress.title} img={dress.image} key={index} price={dress.price} />
-                })}
-            </CardsContainer>
-        </Wrapper>
-    );
+      {/* Cards Section */}
+      <CardsContainer>
+        {dresses.map((dress, index) => (
+          <Card
+            id={dress.id}
+            title={dress.title}
+            img={dress.image}
+            key={index}
+            price={dress.price}
+          />
+        ))}
+      </CardsContainer>
+    </Wrapper>
+  );
 }
 
 export default Home;
